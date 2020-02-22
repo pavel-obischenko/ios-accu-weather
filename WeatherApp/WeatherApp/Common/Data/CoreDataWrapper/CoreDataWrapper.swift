@@ -1,15 +1,15 @@
 //
-//  DataLayer.swift
+//  CoreDataWrapper.swift
 //  WeatherApp
 //
-//  Created by Pavel Obischenko on 21.02.2020.
+//  Created by Pavel Obischenko on 22.02.2020.
 //  Copyright © 2020 Pavel Obischenko. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class DataLayer {
+class CoreDataWrapper {
     private let model: NSManagedObjectModel
     private let rootContext: NSManagedObjectContext
     private let defaultContext: NSManagedObjectContext
@@ -57,7 +57,7 @@ class DataLayer {
     }
 }
 
-extension DataLayer {
+extension CoreDataWrapper: DataStorage {
     func isEntityExists(entityName: String) -> Bool {
         return model.entitiesByName[entityName] != nil
     }
@@ -113,7 +113,7 @@ extension DataLayer {
                 result = try? context.fetch(request)
             }
         }
-        
+
         return result
     }
     
@@ -133,7 +133,7 @@ extension DataLayer {
     }
 }
 
-private extension DataLayer {
+private extension CoreDataWrapper {
     func isContextChanged(context: NSManagedObjectContext) -> Bool {
         var changed = false
         
@@ -163,3 +163,4 @@ private extension DataLayer {
         }
     }
 }
+
