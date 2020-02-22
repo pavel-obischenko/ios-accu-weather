@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3553B7CF24015E9D00566999 /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3553B7CE24015E9D00566999 /* CoreDataWrapper.swift */; };
+		3553B7D42401A8BE00566999 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3553B7D22401A8BE00566999 /* Database.xcdatamodeld */; };
 		355D7C9323FFF27C0030C6CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7C9223FFF27C0030C6CD /* AppDelegate.swift */; };
 		355D7C9523FFF27C0030C6CD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7C9423FFF27C0030C6CD /* SceneDelegate.swift */; };
 		355D7C9723FFF27C0030C6CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7C9623FFF27C0030C6CD /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		3553B7CE24015E9D00566999 /* CoreDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWrapper.swift; sourceTree = "<group>"; };
+		3553B7D32401A8BE00566999 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		355D7C8F23FFF27C0030C6CD /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		355D7C9223FFF27C0030C6CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355D7C9423FFF27C0030C6CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,24 @@
 			path = CoreDataWrapper;
 			sourceTree = "<group>";
 		};
+		3553B7D02401A7E500566999 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				355D7CC624000B070030C6CD /* DataStorageBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		3553B7D12401A88500566999 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				355D7CA023FFF27F0030C6CD /* Info.plist */,
+				355D7C9B23FFF27F0030C6CD /* Assets.xcassets */,
+				3553B7D22401A8BE00566999 /* Database.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		355D7C8623FFF27C0030C6CD = {
 			isa = PBXGroup;
 			children = (
@@ -120,14 +140,13 @@
 		355D7C9123FFF27C0030C6CD /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				3553B7D12401A88500566999 /* Resources */,
 				355D7CC223FFF3F00030C6CD /* Common */,
 				355D7C9223FFF27C0030C6CD /* AppDelegate.swift */,
 				355D7C9423FFF27C0030C6CD /* SceneDelegate.swift */,
 				355D7C9623FFF27C0030C6CD /* ViewController.swift */,
 				355D7C9823FFF27C0030C6CD /* Main.storyboard */,
-				355D7C9B23FFF27F0030C6CD /* Assets.xcassets */,
 				355D7C9D23FFF27F0030C6CD /* LaunchScreen.storyboard */,
-				355D7CA023FFF27F0030C6CD /* Info.plist */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -161,9 +180,9 @@
 		355D7CC524000AEA0030C6CD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3553B7D02401A7E500566999 /* Builder */,
 				3553B7CD24015E7A00566999 /* CoreDataWrapper */,
 				355D7CC323FFFD250030C6CD /* DataStorage.swift */,
-				355D7CC624000B070030C6CD /* DataStorageBuilder.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -360,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3553B7D42401A8BE00566999 /* Database.xcdatamodeld in Sources */,
 				355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */,
 				355D7C9723FFF27C0030C6CD /* ViewController.swift in Sources */,
 				355D7CC423FFFD250030C6CD /* DataStorage.swift in Sources */,
@@ -470,6 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -524,6 +545,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -541,7 +563,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37LXV7H2H9;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = WeatherApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -560,7 +582,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 37LXV7H2H9;
-				INFOPLIST_FILE = WeatherApp/Info.plist;
+				INFOPLIST_FILE = WeatherApp/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -696,6 +718,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3553B7D22401A8BE00566999 /* Database.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3553B7D32401A8BE00566999 /* Database.xcdatamodel */,
+			);
+			currentVersion = 3553B7D32401A8BE00566999 /* Database.xcdatamodel */;
+			path = Database.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 355D7C8723FFF27C0030C6CD /* Project object */;
 }

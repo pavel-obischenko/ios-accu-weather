@@ -23,3 +23,7 @@ protocol DataStorage: class {
     
     func save()
 }
+
+class CommonDataStorageBuilder: DataStorageBuilder {
+    let coordinatorBuilder: PersistentStoreCoordinatorBuilder = SQLLitePersistentStoreCoordinatorBuilder()
+}

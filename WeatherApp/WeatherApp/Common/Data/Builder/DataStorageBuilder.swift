@@ -61,7 +61,3 @@ private extension SQLLitePersistentStoreCoordinatorBuilder {
         return coordinator
     }
 }
-
-class CommonDataLayerBuilder: DataStorageBuilder {
-    let coordinatorBuilder: PersistentStoreCoordinatorBuilder = SQLLitePersistentStoreCoordinatorBuilder()
-}
