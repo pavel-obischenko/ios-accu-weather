@@ -70,54 +70,62 @@ extension DataLayer {
             objc_sync_exit(context)
         }
         
-        return NSEntityDescription.insertNewObject(forEntityName: entityName, into: context)
+        return NSEntityDescription.insertNewObject(forEntityName: entityName, into: currentContext)
     }
     
     func insertObject(object: NSManagedObject) {
         let context = currentContext
-        
-        objc_sync_enter(context)
-        defer {
-            objc_sync_exit(context)
+        context.performAndWait {
+            context.insert(object)
         }
-        
-        context.insert(object)
     }
     
     func deleteObject(object: NSManagedObject) {
         let context = currentContext
-        
-        objc_sync_enter(context)
-        defer {
-            objc_sync_exit(context)
+        context.performAndWait {
+            context.delete(object)
         }
-        
-        context.delete(object)
     }
     
-    func fetch(entityName: String, limit: Int, offset: Int, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, propertiesToFetch: [Any]? = nil) -> [NSManagedObject]? {
+    func deleteObjects(objects: [NSManagedObject]) {
         let context = currentContext
-        
-        objc_sync_enter(context)
-        defer {
-            objc_sync_exit(context)
+        context.performAndWait {
+            objects.forEach {
+                context.delete($0)
+            }
         }
-        
+    }
+    
+    func fetchObjects(entityName: String, limit: Int, offset: Int, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, propertiesToFetch: [Any]? = nil) -> [NSManagedObject]? {
         var result: [NSManagedObject]? = nil
         
-        autoreleasepool {
-            let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
-            request.includesPropertyValues = false
-            request.fetchLimit = limit
-            request.fetchOffset = offset
-            request.predicate = predicate
-            request.sortDescriptors = sortDescriptors
-            request.propertiesToFetch = propertiesToFetch
-            
-            result = try? context.fetch(request)
+        let context = currentContext
+        context.performAndWait {
+            autoreleasepool {
+                let request = NSFetchRequest<NSManagedObject>(entityName: entityName)
+                request.includesPropertyValues = false
+                request.fetchLimit = limit
+                request.fetchOffset = offset
+                request.predicate = predicate
+                request.sortDescriptors = sortDescriptors
+                request.propertiesToFetch = propertiesToFetch
+                
+                result = try? context.fetch(request)
+            }
         }
         
         return result
+    }
+    
+    func findFirstObject(entityName: String, predicate: NSPredicate?) -> NSManagedObject? {
+        return fetchObjects(entityName: entityName, limit: 0, offset: 0, predicate: predicate)?.first
+    }
+    
+    func findFirstOrCreateObject(entityName: String, predicate: NSPredicate?) -> NSManagedObject {
+        if let object = findFirstObject(entityName: entityName, predicate: predicate) {
+            return object
+        }
+        return createObject(entityName: entityName)
     }
     
     func save() {
