@@ -1,2 +1,2 @@
 # ios-accu-weather
-iOS AccuWeather Client
+The iOS AccuWeather Client
