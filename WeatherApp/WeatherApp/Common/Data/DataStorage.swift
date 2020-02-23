@@ -13,7 +13,6 @@ protocol DataStorage: class {
     func isEntityExists(entityName: String) -> Bool
     
     func createObject(entityName: String) -> NSManagedObject
-    func insertObject(object: NSManagedObject)
     func deleteObject(object: NSManagedObject)
     func deleteObjects(objects: [NSManagedObject])
     
@@ -26,4 +25,8 @@ protocol DataStorage: class {
 
 class CommonDataStorageBuilder: DataStorageBuilder {
     let coordinatorBuilder: PersistentStoreCoordinatorBuilder = SQLLitePersistentStoreCoordinatorBuilder()
+}
+
+class InMemoryDataStorageBuilder: DataStorageBuilder {
+    let coordinatorBuilder: PersistentStoreCoordinatorBuilder = InMemoryPersistentStoreCoordinatorBuilder()
 }

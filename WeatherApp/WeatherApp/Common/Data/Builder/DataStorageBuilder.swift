@@ -9,10 +9,6 @@
 import Foundation
 import CoreData
 
-protocol PersistentStoreCoordinatorBuilder {
-    func coordinator(with storeName: String, managedObjectModel model: NSManagedObjectModel) -> NSPersistentStoreCoordinator?
-}
-
 protocol DataStorageBuilder {
     var coordinatorBuilder: PersistentStoreCoordinatorBuilder { get }
     func build(with storeName: String) -> DataStorage?
@@ -37,27 +33,5 @@ extension DataStorageBuilder {
     func managedObjectModel(with storeName: String) -> NSManagedObjectModel? {
         guard let url = Bundle.main.url(forResource: storeName, withExtension: "momd") else { return nil }
         return NSManagedObjectModel(contentsOf: url)
-    }
-}
-
-class SQLLitePersistentStoreCoordinatorBuilder: PersistentStoreCoordinatorBuilder {}
-
-extension SQLLitePersistentStoreCoordinatorBuilder {
-    func coordinator(with storeName: String, managedObjectModel model: NSManagedObjectModel) -> NSPersistentStoreCoordinator? {
-        return setupCoordinator(NSPersistentStoreCoordinator(managedObjectModel: model), storeName: storeName)
-    }
-}
-
-private extension SQLLitePersistentStoreCoordinatorBuilder {
-    func setupCoordinator(_ coordinator: NSPersistentStoreCoordinator, storeName: String) -> NSPersistentStoreCoordinator? {
-        guard let docUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else { return nil }
-        let storeUrl = docUrl.appendingPathComponent("\(storeName).sqlite")
-        
-        guard let _ = try? coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeUrl, options: [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true]) else {
-            try? FileManager.default.removeItem(at: storeUrl)
-            return setupCoordinator(coordinator, storeName: storeName)
-        }
-        
-        return coordinator
     }
 }

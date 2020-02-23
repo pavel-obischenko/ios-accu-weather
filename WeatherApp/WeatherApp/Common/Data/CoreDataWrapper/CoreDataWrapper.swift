@@ -73,13 +73,6 @@ extension CoreDataWrapper: DataStorage {
         return NSEntityDescription.insertNewObject(forEntityName: entityName, into: currentContext)
     }
     
-    func insertObject(object: NSManagedObject) {
-        let context = currentContext
-        context.performAndWait {
-            context.insert(object)
-        }
-    }
-    
     func deleteObject(object: NSManagedObject) {
         let context = currentContext
         context.performAndWait {

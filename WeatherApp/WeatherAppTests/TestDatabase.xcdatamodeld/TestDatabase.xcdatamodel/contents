@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="First" representedClassName="First" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="list" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Second" inverseName="first" inverseEntity="Second"/>
+    </entity>
+    <entity name="Second" representedClassName="Second" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="first" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="First" inverseName="list" inverseEntity="First"/>
+    </entity>
+    <elements>
+        <element name="First" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Second" positionX="-54" positionY="-9" width="128" height="73"/>
+    </elements>
+</model>

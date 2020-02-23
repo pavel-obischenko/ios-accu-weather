@@ -7,28 +7,66 @@
 //
 
 import XCTest
+import CoreData
+
 @testable import WeatherApp
 
 class WeatherAppTests: XCTestCase {
+    
+    var storage: DataStorage? = nil
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        storage = InMemoryDataStorageBuilder().build(with: "TestDatabase")
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        storage = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDataStorageCreation() {
+        XCTAssertNotNil(storage)
+    }
+    
+    func testIsEntityExists() {
+        XCTAssertNotNil(storage)
+        guard let storage = storage else { return }
+        
+        XCTAssertTrue(storage.isEntityExists(entityName: "First"))
+        XCTAssertTrue(storage.isEntityExists(entityName: "Second"))
+        XCTAssertFalse(storage.isEntityExists(entityName: "Unknown"))
+    }
+    
+    func testObjectCreation() {
+        XCTAssertNotNil(storage)
+        guard let storage = storage else { return }
+        
+        let objectFirst = storage.createObject(entityName: "First")
+        XCTAssertNotNil(objectFirst)
+        
+        let value = "NameValue"
+        let key = "name"
+        objectFirst.setValue(value, forKey: key)
+        
+        XCTAssertTrue((objectFirst.value(forKey: key) as? String) == value)
+        XCTAssertTrue(objectFirst.hasChanges)
+        XCTAssertTrue(objectFirst.isInserted)
+        XCTAssertFalse(objectFirst.isFault)
+        XCTAssertFalse(objectFirst.isDeleted)
+        XCTAssertFalse(objectFirst.isUpdated)
+    }
+    
+    func testObjectDeletion() {
+        XCTAssertNotNil(storage)
+        guard let storage = storage else { return }
+
+
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+//    func testPerformanceExample() {
+//        // This is an example of a performance test case.
+//        self.measure {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
 
 }
