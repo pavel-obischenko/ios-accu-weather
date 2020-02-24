@@ -53,20 +53,22 @@ class WeatherAppTests: XCTestCase {
         XCTAssertFalse(objectFirst.isFault)
         XCTAssertFalse(objectFirst.isDeleted)
         XCTAssertFalse(objectFirst.isUpdated)
+        
+        XCTAssertTrue(storage.fetchObjects(entityName: "First", limit: 0, offset: 0, predicate: nil, sortDescriptors: nil, propertiesToFetch: nil)?.count == 1)
     }
     
     func testObjectDeletion() {
         XCTAssertNotNil(storage)
         guard let storage = storage else { return }
 
-
+        XCTAssertTrue(storage.fetchObjects(entityName: "First", limit: 0, offset: 0, predicate: nil, sortDescriptors: nil, propertiesToFetch: nil)?.count == 0)
+        
+        let objectFirst = storage.createObject(entityName: "First")
+        XCTAssertNotNil(objectFirst)
+        
+        XCTAssertTrue(storage.fetchObjects(entityName: "First", limit: 0, offset: 0, predicate: nil, sortDescriptors: nil, propertiesToFetch: nil)?.count == 1)
+        
+        storage.deleteObject(object: objectFirst)
+        XCTAssertTrue(storage.fetchObjects(entityName: "First", limit: 0, offset: 0, predicate: nil, sortDescriptors: nil, propertiesToFetch: nil)?.count == 0)
     }
-
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
-
 }
