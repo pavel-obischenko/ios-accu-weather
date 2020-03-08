@@ -29,6 +29,9 @@
 		355D7CB523FFF27F0030C6CD /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7CB423FFF27F0030C6CD /* WeatherAppUITests.swift */; };
 		355D7CC423FFFD250030C6CD /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7CC323FFFD250030C6CD /* DataStorage.swift */; };
 		355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7CC624000B070030C6CD /* DataStorageBuilder.swift */; };
+		35E0E7112410227B00E7F57E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E0E7102410227B00E7F57E /* Network.swift */; };
+		35E9BC932413DF77007DB59A /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9BC922413DF77007DB59A /* URLs.swift */; };
+		35E9BC952413F03A007DB59A /* AlamofireNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */; };
 		B3572240DD0DB52E632B1963 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE52F82537FC2A617C0F1849 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,9 @@
 		355D7CB623FFF27F0030C6CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		355D7CC323FFFD250030C6CD /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		355D7CC624000B070030C6CD /* DataStorageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageBuilder.swift; sourceTree = "<group>"; };
+		35E0E7102410227B00E7F57E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		35E9BC922413DF77007DB59A /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
+		35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetwork.swift; sourceTree = "<group>"; };
 		9865082AF4694FE596F6515F /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FE52F82537FC2A617C0F1849 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF8527AE33827F0A19F229E2 /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 		355D7CC223FFF3F00030C6CD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				35E0E70F2410226200E7F57E /* Network */,
 				355D7CC524000AEA0030C6CD /* Data */,
 			);
 			path = Common;
@@ -227,6 +234,24 @@
 				355D7CC323FFFD250030C6CD /* DataStorage.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		35E0E70F2410226200E7F57E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				35E9BC962413F069007DB59A /* Alamofire */,
+				35E0E7102410227B00E7F57E /* Network.swift */,
+				35E9BC922413DF77007DB59A /* URLs.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		35E9BC962413F069007DB59A /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */,
+			);
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		ECB4799AB54477F2C73D722C /* Pods */ = {
@@ -422,12 +447,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3553B7D42401A8BE00566999 /* Database.xcdatamodeld in Sources */,
+				35E9BC932413DF77007DB59A /* URLs.swift in Sources */,
 				355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */,
+				35E0E7112410227B00E7F57E /* Network.swift in Sources */,
 				35416F652406E9FD009A4DCB /* LocationService.swift in Sources */,
 				355D7C9723FFF27C0030C6CD /* ViewController.swift in Sources */,
 				353A1FFB2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift in Sources */,
 				355D7CC423FFFD250030C6CD /* DataStorage.swift in Sources */,
 				353A200424030449009B7033 /* TestDatabase.xcdatamodeld in Sources */,
+				35E9BC952413F03A007DB59A /* AlamofireNetwork.swift in Sources */,
 				355D7C9323FFF27C0030C6CD /* AppDelegate.swift in Sources */,
 				35416F692406F122009A4DCB /* ForecastService.swift in Sources */,
 				355D7C9523FFF27C0030C6CD /* SceneDelegate.swift in Sources */,
