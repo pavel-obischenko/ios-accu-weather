@@ -24,6 +24,15 @@ class LocationService: NSObject {
     
     private weak var weakSelf: LocationService?
     
+    override init() {
+        locationManager = CLLocationManager()
+        
+        super.init()
+        
+        locationManager.delegate = self
+        weakSelf = self
+    }
+    
     init(locationManager manager: CLLocationManager) {
         locationManager = manager
         
@@ -74,7 +83,7 @@ class LocationService: NSObject {
         return CLLocationManager.locationServicesEnabled() && (permissionStatus == .authorizedAlways || permissionStatus == .authorizedWhenInUse)
     }
     
-    func requestPermission(desiredStatus: CLAuthorizationStatus) -> LocationService {
+    func requestPermission(desiredStatus: CLAuthorizationStatus = .authorizedWhenInUse) -> LocationService {
         DispatchQueue.main.async {
             if CLLocationManager.locationServicesEnabled() {
                 if !self.isPermissionsGranted() && self.permissionStatus == .notDetermined {
