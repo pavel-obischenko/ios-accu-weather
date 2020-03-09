@@ -21,8 +21,9 @@ class AlamofireNetwork: Network {
     private var headersBuilder: AlamofireHeadersBuilder?
     private var responseProcessor: AlamofireResponseProcessor?
     
-    init(headersBuilder: AlamofireHeadersBuilder?) {
-        self.headersBuilder = headersBuilder
+    init(headersBuilder builder: AlamofireHeadersBuilder?, responseProcessor processor: AlamofireResponseProcessor?) {
+        headersBuilder = builder
+        responseProcessor = processor
     }
     
     func GET(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?) {
@@ -44,8 +45,10 @@ class AlamofireNetwork: Network {
     func PATCH(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?) {
         request(url, method: .patch, parameters: body, completion: completion)
     }
-    
-    private func request(_ url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: NetworkCompletionBlock?) {
+}
+
+private extension AlamofireNetwork {
+    func request(_ url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: NetworkCompletionBlock?) {
         AF.request(url, method: method, parameters: parameters, headers: headersBuilder?.build(for: url, method: method, parameters: parameters)).responseJSON { [weak self] response in
             switch response.result {
             case .success:
