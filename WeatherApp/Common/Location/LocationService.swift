@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 class LocationService: NSObject {
-    typealias LocationHandler = (LocationService?)->()
+    typealias LocationHandler = (LocationService?) -> Void
     
     public private(set) var locationManager: CLLocationManager
     public private(set) var currentLocation: CLLocation?
@@ -22,15 +22,12 @@ class LocationService: NSObject {
     private var updatePermissionHandler: LocationHandler?
     private var updateLocationHandler: LocationHandler?
     
-    private weak var weakSelf: LocationService?
-    
     override init() {
         locationManager = CLLocationManager()
         
         super.init()
         
         locationManager.delegate = self
-        weakSelf = self
     }
     
     init(locationManager manager: CLLocationManager) {
@@ -39,13 +36,14 @@ class LocationService: NSObject {
         super.init()
         
         locationManager.delegate = self
-        weakSelf = self
     }
     
     @discardableResult
     func start(desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyBest) -> LocationService {
-        locationManager.desiredAccuracy = desiredAccuracy
-        locationManager.startUpdatingLocation()
+        DispatchQueue.main.async {
+            self.locationManager.desiredAccuracy = desiredAccuracy
+            self.locationManager.startUpdatingLocation()
+        }
         
         return self
     }
@@ -59,8 +57,10 @@ class LocationService: NSObject {
     
     @discardableResult
     func updateOnce(desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyBest) -> LocationService {
-        locationManager.desiredAccuracy = desiredAccuracy
-        locationManager.requestLocation()
+        DispatchQueue.main.async {
+            self.locationManager.desiredAccuracy = desiredAccuracy
+            self.locationManager.requestLocation()
+        }
         
         return self
     }
@@ -83,6 +83,7 @@ class LocationService: NSObject {
         return CLLocationManager.locationServicesEnabled() && (permissionStatus == .authorizedAlways || permissionStatus == .authorizedWhenInUse)
     }
     
+    @discardableResult
     func requestPermission(desiredStatus: CLAuthorizationStatus = .authorizedWhenInUse) -> LocationService {
         DispatchQueue.main.async {
             if CLLocationManager.locationServicesEnabled() {
@@ -90,7 +91,8 @@ class LocationService: NSObject {
                     self.requestLocationPermission(desiredStatus: desiredStatus)
                 }
             } else {
-                self.updatePermissionHandler?(self.weakSelf)
+                weak var weakSelf = self
+                self.updatePermissionHandler?(weakSelf)
             }
         }
         
@@ -98,7 +100,7 @@ class LocationService: NSObject {
     }
     
     deinit {
-        debugPrint("deinit")
+        debugPrint("LocationManager: deinit")
     }
 }
 
@@ -120,7 +122,8 @@ extension LocationService: CLLocationManagerDelegate {
         guard status != .notDetermined else { return }
         
         DispatchQueue.main.async {
-            self.updatePermissionHandler?(self.weakSelf)
+            weak var weakSelf = self
+            self.updatePermissionHandler?(weakSelf)
         }
     }
     
@@ -130,7 +133,9 @@ extension LocationService: CLLocationManagerDelegate {
             self.currentLocation = locations.last
             
             guard let old = oldLocation, let current = self.currentLocation, current.coordinate == old.coordinate else {
-                self.updateLocationHandler?(self.weakSelf)
+                weak var weakSelf = self
+                self.updateLocationHandler?(weakSelf)
+                
                 return
             }
         }
@@ -143,6 +148,6 @@ extension LocationService: CLLocationManagerDelegate {
 
 extension CLLocationCoordinate2D: Equatable {}
 
-public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+public func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
     return (lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude)
 }
