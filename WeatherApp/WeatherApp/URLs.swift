@@ -9,7 +9,6 @@
 import Foundation
 
 extension URL {
-    static let base = URL(string: "http://dataservice.accuweather.com/")
-    
-    static let loactionSearch = URL(string: "/locations/v1/cities/geoposition/search", relativeTo: base)
+    static let baseUrl = URL(string: "http://dataservice.accuweather.com/")
+    static let loactionSearch = URL(string: "/locations/v1/cities/geoposition/search", relativeTo: baseUrl)
 }

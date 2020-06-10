@@ -13,53 +13,52 @@ protocol AlamofireHeadersBuilder: class {
     func build(for url: URL, method: HTTPMethod, parameters: [String: Any]?) -> HTTPHeaders?
 }
 
-protocol AlamofireResponseProcessor: class {
-    func process(response: [String: Any], url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: NetworkCompletionBlock?)
-}
-
 class AlamofireNetwork: Network {
     private var headersBuilder: AlamofireHeadersBuilder?
-    private var responseProcessor: AlamofireResponseProcessor?
+    private var responseProcessor: AlamofireResponseProcessor
     
     init(headersBuilder builder: AlamofireHeadersBuilder?, responseProcessor processor: AlamofireResponseProcessor?) {
         headersBuilder = builder
-        responseProcessor = processor
+        responseProcessor = processor ?? DefaultAlamofireResponseProcessor()
     }
     
-    func GET(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?) {
+    func GET<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
         request(url, method: .get, parameters: body, completion: completion)
     }
     
-    func PUT(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?) {
+    func PUT<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
         request(url, method: .put, parameters: body, completion: completion)
     }
     
-    func DELETE(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?) {
+    func DELETE<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
         request(url, method: .delete, parameters: body, completion: completion)
     }
     
-    func POST(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?) {
+    func POST<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
         request(url, method: .post, parameters: body, completion: completion)
     }
     
-    func PATCH(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?) {
+    func POST<T: Decodable>(_ url: URL, body: [String : Any]?, headers: [String : Any]?, multypartBuilder: NetworkMultypartBuilder?, completion: NetworkCompletionHandler<T>?) {
+    }
+    
+    func PATCH<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
         request(url, method: .patch, parameters: body, completion: completion)
     }
 }
 
 private extension AlamofireNetwork {
-    func request(_ url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: NetworkCompletionBlock?) {
+    func request<T: Decodable>(_ url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
         AF.request(url, method: method, parameters: parameters, headers: headersBuilder?.build(for: url, method: method, parameters: parameters)).responseJSON { [weak self] response in
             switch response.result {
             case .success:
-                guard let responseProcessor = self?.responseProcessor else {
-                    completion?(response, nil)
-                    break
+                guard let data = response.data else {
+                    completion?(nil, nil)
+                    return
                 }
                 
-                let value = (response.value as? [String : Any]) ?? [String : Any]()
-                responseProcessor.process(response: value, url: url, method: method, parameters: parameters, completion: completion)
-            case let .failure(error):
+                self?.responseProcessor.process(response: data, url: url, method: method, parameters: parameters, completion: completion)
+                
+            case .failure(let error):
                 completion?(nil, error)
             }
         }

@@ -8,12 +8,14 @@
 
 import Foundation
 
-public typealias NetworkCompletionBlock = ( _ response : Any?, _ error : Error?) -> ()
+typealias NetworkMultypartElement = (data: Data, withName: String, mimeType: String)
+typealias NetworkCompletionHandler<T: Decodable> = (_ response: T?, _ error: Error?) -> ()
+typealias NetworkMultypartBuilder = () -> ([NetworkMultypartElement]?)
 
-public protocol Network: class {
-    func GET(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?)
-    func PUT(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?)
-    func DELETE(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?)
-    func POST(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?)
-    func PATCH(_ url: URL, body: [String: Any]?, completion: NetworkCompletionBlock?)
+protocol Network: class {
+    func GET<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?)
+    func PUT<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?)
+    func DELETE<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?)
+    func PATCH<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?)
+    func POST<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, multypartBuilder: NetworkMultypartBuilder?, completion: NetworkCompletionHandler<T>?)
 }
