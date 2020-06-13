@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3508526C2417A3A70015DC8C /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508526B2417A3A70015DC8C /* UIHelper.swift */; };
-		3530614C249152CC0062611F /* AlamofireResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3530614B249152CC0062611F /* AlamofireResponseProcessor.swift */; };
+		3530614C249152CC0062611F /* AlamofireProcessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3530614B249152CC0062611F /* AlamofireProcessors.swift */; };
 		353A1FFB2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A1FFA2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift */; };
 		353A1FFE2402F7D9009B7033 /* TestDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 353A1FFC2402F7D9009B7033 /* TestDatabase.xcdatamodeld */; };
 		353A1FFF2402F9F8009B7033 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7CC323FFFD250030C6CD /* DataStorage.swift */; };
@@ -17,6 +17,7 @@
 		353A20022402FA03009B7033 /* DataStorageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7CC624000B070030C6CD /* DataStorageBuilder.swift */; };
 		353A200324030401009B7033 /* TestDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 353A1FFC2402F7D9009B7033 /* TestDatabase.xcdatamodeld */; };
 		353A200424030449009B7033 /* TestDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 353A1FFC2402F7D9009B7033 /* TestDatabase.xcdatamodeld */; };
+		353EC9BA2494D6F900DD05E4 /* ModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC9B92494D6F900DD05E4 /* ModelAssembly.swift */; };
 		35416F692406F122009A4DCB /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35416F682406F122009A4DCB /* ForecastService.swift */; };
 		3553B7CF24015E9D00566999 /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3553B7CE24015E9D00566999 /* CoreDataWrapper.swift */; };
 		3553B7D42401A8BE00566999 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3553B7D22401A8BE00566999 /* Database.xcdatamodeld */; };
@@ -34,7 +35,6 @@
 		357D281B248E978500F978B6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D281A248E978500F978B6 /* URL.swift */; };
 		35D45AA324164A9500D3C3E1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D45AA224164A9500D3C3E1 /* LocationService.swift */; };
 		35E0E7112410227B00E7F57E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E0E7102410227B00E7F57E /* Network.swift */; };
-		35E9BC932413DF77007DB59A /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9BC922413DF77007DB59A /* URLs.swift */; };
 		35E9BC952413F03A007DB59A /* AlamofireNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */; };
 		B3572240DD0DB52E632B1963 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE52F82537FC2A617C0F1849 /* Pods_WeatherApp.framework */; };
 /* End PBXBuildFile section */
@@ -58,9 +58,10 @@
 
 /* Begin PBXFileReference section */
 		3508526B2417A3A70015DC8C /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
-		3530614B249152CC0062611F /* AlamofireResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireResponseProcessor.swift; sourceTree = "<group>"; };
+		3530614B249152CC0062611F /* AlamofireProcessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcessors.swift; sourceTree = "<group>"; };
 		353A1FFA2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStoreCoordinatorBuilder.swift; sourceTree = "<group>"; };
 		353A1FFD2402F7D9009B7033 /* TestDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestDatabase.xcdatamodel; sourceTree = "<group>"; };
+		353EC9B92494D6F900DD05E4 /* ModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAssembly.swift; sourceTree = "<group>"; };
 		35416F682406F122009A4DCB /* ForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastService.swift; sourceTree = "<group>"; };
 		3553B7CE24015E9D00566999 /* CoreDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWrapper.swift; sourceTree = "<group>"; };
 		3553B7D32401A8BE00566999 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		357D281A248E978500F978B6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		35D45AA224164A9500D3C3E1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		35E0E7102410227B00E7F57E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		35E9BC922413DF77007DB59A /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
 		35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetwork.swift; sourceTree = "<group>"; };
 		9865082AF4694FE596F6515F /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FE52F82537FC2A617C0F1849 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +165,6 @@
 			children = (
 				355D7CA023FFF27F0030C6CD /* Info.plist */,
 				355D7C9B23FFF27F0030C6CD /* Assets.xcassets */,
-				3553B7D22401A8BE00566999 /* Database.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -196,12 +195,10 @@
 		355D7C9123FFF27C0030C6CD /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				357D2819248E977800F978B6 /* Network */,
-				35671BEB2424AC2F0030DE8F /* Data */,
-				35416F662406F0C3009A4DCB /* Services */,
+				358FE77A2493F8B70037DCB5 /* Model */,
+				358FE7782493F83E0037DCB5 /* MainScreen */,
 				3553B7D12401A88500566999 /* Resources */,
 				355D7C9223FFF27C0030C6CD /* AppDelegate.swift */,
-				35E9BC922413DF77007DB59A /* URLs.swift */,
 				355D7C9623FFF27C0030C6CD /* ViewController.swift */,
 				355D7C9823FFF27C0030C6CD /* Main.storyboard */,
 				355D7C9D23FFF27F0030C6CD /* LaunchScreen.storyboard */,
@@ -252,6 +249,7 @@
 		35671BEB2424AC2F0030DE8F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3553B7D22401A8BE00566999 /* Database.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -270,6 +268,40 @@
 				357D281A248E978500F978B6 /* URL.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		358FE7782493F83E0037DCB5 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				358FE77C2493F96D0037DCB5 /* ViewModel */,
+				358FE77B2493F8DF0037DCB5 /* View */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		358FE77A2493F8B70037DCB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35416F662406F0C3009A4DCB /* Services */,
+				35671BEB2424AC2F0030DE8F /* Data */,
+				357D2819248E977800F978B6 /* Network */,
+				353EC9B92494D6F900DD05E4 /* ModelAssembly.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		358FE77B2493F8DF0037DCB5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		358FE77C2493F96D0037DCB5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		35D45AA124164A7B00D3C3E1 /* Location */ = {
@@ -293,7 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */,
-				3530614B249152CC0062611F /* AlamofireResponseProcessor.swift */,
+				3530614B249152CC0062611F /* AlamofireProcessors.swift */,
 			);
 			path = Alamofire;
 			sourceTree = "<group>";
@@ -491,8 +523,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3553B7D42401A8BE00566999 /* Database.xcdatamodeld in Sources */,
-				35E9BC932413DF77007DB59A /* URLs.swift in Sources */,
-				3530614C249152CC0062611F /* AlamofireResponseProcessor.swift in Sources */,
+				353EC9BA2494D6F900DD05E4 /* ModelAssembly.swift in Sources */,
+				3530614C249152CC0062611F /* AlamofireProcessors.swift in Sources */,
 				355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */,
 				35E0E7112410227B00E7F57E /* Network.swift in Sources */,
 				355D7C9723FFF27C0030C6CD /* ViewController.swift in Sources */,

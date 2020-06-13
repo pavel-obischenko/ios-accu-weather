@@ -9,22 +9,34 @@
 import UIKit
 import CoreLocation
 
+import Swinject
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var service = LocationService()
+    
+    let assembler = Assembler()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIHelper.createWindow()
-
-        guard let mainController = UIHelper.loadInitialViewController(storiboardName: "Main") else { return false }
-        UIHelper.changeRootViewControllerTo(controller: mainController)
         
-        service.requestPermission().start().onUpdate { (ls) in
-            debugPrint("onUpdate: " + "\(String(describing: ls?.currentLocation))")
-        }
+        assemble()
+        start()
         
         return true
+    }
+    
+    func start() {
+        guard let mainController = UIHelper.loadInitialViewController(storyboardName: "Main") else {
+            assertionFailure("Main View Controller Not Found!")
+            return }
+        UIHelper.changeRootViewControllerTo(controller: mainController)
+    }
+}
+
+extension AppDelegate {
+    func assemble() {
+        assembler.apply(assemblies: [ModelAssembly()])
     }
 }
 

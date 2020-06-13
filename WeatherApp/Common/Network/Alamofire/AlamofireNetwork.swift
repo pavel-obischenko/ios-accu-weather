@@ -14,12 +14,15 @@ protocol AlamofireHeadersBuilder: class {
 }
 
 class AlamofireNetwork: Network {
-    private var headersBuilder: AlamofireHeadersBuilder?
-    private var responseProcessor: AlamofireResponseProcessor
+    private(set) var headersBuilder: AlamofireHeadersBuilder?
+    private(set) var responseProcessor: AlamofireResponseProcessor
+    private(set) var requestProcessor: AlamofireRequestProcessor
     
-    init(headersBuilder builder: AlamofireHeadersBuilder?, responseProcessor processor: AlamofireResponseProcessor?) {
-        headersBuilder = builder
-        responseProcessor = processor ?? DefaultAlamofireResponseProcessor()
+    init(headersBuilder: AlamofireHeadersBuilder?, requestProcessor: AlamofireRequestProcessor?, responseProcessor: AlamofireResponseProcessor?) {
+        self.headersBuilder = headersBuilder
+        
+        self.requestProcessor = requestProcessor ?? DefaultAlamofireRequestProcessor()
+        self.responseProcessor = responseProcessor ?? DefaultAlamofireResponseProcessor()
     }
     
     func GET<T: Decodable>(_ url: URL, body: [String: Any]?, headers: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
@@ -48,7 +51,9 @@ class AlamofireNetwork: Network {
 
 private extension AlamofireNetwork {
     func request<T: Decodable>(_ url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: NetworkCompletionHandler<T>?) {
-        AF.request(url, method: method, parameters: parameters, headers: headersBuilder?.build(for: url, method: method, parameters: parameters)).responseJSON { [weak self] response in
+        let requestParams = requestProcessor.process(url: url, parameters: parameters)
+        
+        AF.request(requestParams.url, method: method, parameters: requestParams.parameters, headers: headersBuilder?.build(for: url, method: method, parameters: parameters)).responseJSON { [weak self] response in
             switch response.result {
             case .success:
                 guard let data = response.data else {

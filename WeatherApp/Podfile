@@ -5,4 +5,8 @@ use_frameworks!
 
 target 'WeatherApp' do
 	pod 'Alamofire', '~> 5.0'
+  pod 'Swinject'
+  pod 'SwinjectAutoregistration'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 end

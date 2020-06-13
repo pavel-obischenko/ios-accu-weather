@@ -1,5 +1,5 @@
 //
-//  AlamofireResponseProcessor.swift
+//  AlamofireProcessors.swift
 //  WeatherApp
 //
 //  Created by Pavel Obischenko on 10.06.2020.
@@ -11,6 +11,10 @@ import Alamofire
 
 protocol AlamofireResponseProcessor: class {
     func process<T: Decodable>(response: Data, url: URL, method: HTTPMethod, parameters: [String: Any]?, completion: NetworkCompletionHandler<T>?)
+}
+
+protocol AlamofireRequestProcessor {
+    func process(url: URL, parameters: [String: Any]?) -> (url: URL, parameters: [String: Any]?)
 }
 
 extension AlamofireResponseProcessor {
@@ -25,4 +29,11 @@ extension AlamofireResponseProcessor {
     }
 }
 
+extension AlamofireRequestProcessor {
+    func process(url: URL, parameters: [String: Any]?) -> (url: URL, parameters: [String: Any]?) {
+        return (url, parameters)
+    }
+}
+
 class DefaultAlamofireResponseProcessor: AlamofireResponseProcessor {}
+class DefaultAlamofireRequestProcessor: AlamofireRequestProcessor {}

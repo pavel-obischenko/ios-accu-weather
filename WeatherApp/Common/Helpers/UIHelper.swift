@@ -9,18 +9,18 @@
 import UIKit
 
 class UIHelper {
-    class func createWindow() -> UIWindow {
+    static func createWindow() -> UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         
         return window
     }
     
-    class public func changeRootViewControllerTo(controller: UIViewController) {
+    static public func changeRootViewControllerTo(controller: UIViewController) {
         changeRootViewControllerTo(controller: controller, completion: nil)
     }
     
-    class public func changeRootViewControllerTo(controller: UIViewController, completion: (() -> Void)?) {
+    static public func changeRootViewControllerTo(controller: UIViewController, completion: (() -> Void)?) {
         guard let window = UIApplication.shared.keyWindow else {
             completion?()
             return
@@ -43,13 +43,13 @@ class UIHelper {
         }
     }
     
-    class func loadInitialViewController(storiboardName: String) -> UIViewController? {
-        let storiboard = UIStoryboard(name: storiboardName, bundle: nil);
-        return storiboard.instantiateInitialViewController()
+    static func loadInitialViewController(storyboardName: String) -> UIViewController? {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil);
+        return storyboard.instantiateInitialViewController()
     }
     
-    class func loadViewController(controllerName: String, storiboardName: String) -> Any? {
-        let storiboard = UIStoryboard(name: storiboardName, bundle: nil);
-        return storiboard.instantiateViewController(withIdentifier: controllerName)
+    static func loadViewController(controllerName: String, storyboardName: String) -> Any? {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil);
+        return storyboard.instantiateViewController(withIdentifier: controllerName)
     }
 }
