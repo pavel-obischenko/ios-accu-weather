@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="City" representedClassName="City" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="locationKey" optional="YES" attributeType="String"/>
+        <attribute name="areaId" optional="YES" attributeType="String"/>
+        <attribute name="areaName" optional="YES" attributeType="String"/>
+        <attribute name="countryId" optional="YES" attributeType="String"/>
+        <attribute name="countryName" optional="YES" attributeType="String"/>
+        <attribute name="key" optional="YES" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="regionId" optional="YES" attributeType="String"/>
+        <attribute name="regionName" optional="YES" attributeType="String"/>
+        <attribute name="timezone" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Config" representedClassName="Config" syncable="YES">
-        <attribute name="cities" optional="YES" attributeType="Transformable"/>
+        <attribute name="cityKeys" optional="YES" attributeType="Transformable"/>
         <attribute name="id" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="City" positionX="-63" positionY="-18" width="128" height="28"/>
-        <element name="Config" positionX="-54" positionY="18" width="128" height="28"/>
+        <element name="City" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="Config" positionX="-54" positionY="18" width="128" height="73"/>
     </elements>
 </model>

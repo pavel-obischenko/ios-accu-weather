@@ -8,12 +8,7 @@
 
 import Foundation
 
-class ForecastService {
-    var network: Network
-    
-    init(_ network: Network) {
-        self.network = network
-    }
+class ForecastService: Service {
     
     func current() {
         

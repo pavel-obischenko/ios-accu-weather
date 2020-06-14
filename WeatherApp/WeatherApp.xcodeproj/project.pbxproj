@@ -20,10 +20,13 @@
 		353EC9BA2494D6F900DD05E4 /* ModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353EC9B92494D6F900DD05E4 /* ModelAssembly.swift */; };
 		35416F692406F122009A4DCB /* ForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35416F682406F122009A4DCB /* ForecastService.swift */; };
 		3553B7CF24015E9D00566999 /* CoreDataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3553B7CE24015E9D00566999 /* CoreDataWrapper.swift */; };
-		3553B7D42401A8BE00566999 /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3553B7D22401A8BE00566999 /* Database.xcdatamodeld */; };
 		3556D4FF248D749E00C2F0D0 /* PlistFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3556D4FE248D749E00C2F0D0 /* PlistFile.swift */; };
 		355ABBB924952A5E007C158B /* WeatherRequestProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355ABBB824952A5E007C158B /* WeatherRequestProcessor.swift */; };
 		355ABBBB24952AAA007C158B /* WeatherResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355ABBBA24952AAA007C158B /* WeatherResponseProcessor.swift */; };
+		355ABBBE249556D4007C158B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355ABBBD249556D4007C158B /* Service.swift */; };
+		355ABBC12496180B007C158B /* Database.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 355ABBBF2496180B007C158B /* Database.xcdatamodeld */; };
+		355ABBC3249619D2007C158B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355ABBC2249619D2007C158B /* City.swift */; };
+		355ABBC6249622B9007C158B /* KeyedDecodingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355ABBC5249622B9007C158B /* KeyedDecodingContainer.swift */; };
 		355D7C9323FFF27C0030C6CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7C9223FFF27C0030C6CD /* AppDelegate.swift */; };
 		355D7C9723FFF27C0030C6CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7C9623FFF27C0030C6CD /* ViewController.swift */; };
 		355D7C9A23FFF27C0030C6CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355D7C9823FFF27C0030C6CD /* Main.storyboard */; };
@@ -66,10 +69,13 @@
 		353EC9B92494D6F900DD05E4 /* ModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAssembly.swift; sourceTree = "<group>"; };
 		35416F682406F122009A4DCB /* ForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastService.swift; sourceTree = "<group>"; };
 		3553B7CE24015E9D00566999 /* CoreDataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWrapper.swift; sourceTree = "<group>"; };
-		3553B7D32401A8BE00566999 /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
 		3556D4FE248D749E00C2F0D0 /* PlistFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistFile.swift; sourceTree = "<group>"; };
 		355ABBB824952A5E007C158B /* WeatherRequestProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequestProcessor.swift; sourceTree = "<group>"; };
 		355ABBBA24952AAA007C158B /* WeatherResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponseProcessor.swift; sourceTree = "<group>"; };
+		355ABBBD249556D4007C158B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		355ABBC02496180B007C158B /* Database.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Database.xcdatamodel; sourceTree = "<group>"; };
+		355ABBC2249619D2007C158B /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		355ABBC5249622B9007C158B /* KeyedDecodingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyedDecodingContainer.swift; sourceTree = "<group>"; };
 		355D7C8F23FFF27C0030C6CD /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		355D7C9223FFF27C0030C6CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		355D7C9623FFF27C0030C6CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +179,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		355ABBBC249556BE007C158B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				355ABBBD249556D4007C158B /* Service.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		355ABBC4249622A9007C158B /* Decoding */ = {
+			isa = PBXGroup;
+			children = (
+				355ABBC5249622B9007C158B /* KeyedDecodingContainer.swift */,
+			);
+			path = Decoding;
+			sourceTree = "<group>";
+		};
 		355D7C8623FFF27C0030C6CD = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +254,7 @@
 		355D7CC223FFF3F00030C6CD /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				355ABBBC249556BE007C158B /* Services */,
 				3508526A2417A38B0015DC8C /* Helpers */,
 				35D45AA124164A7B00D3C3E1 /* Location */,
 				35E0E70F2410226200E7F57E /* Network */,
@@ -253,7 +276,7 @@
 		35671BEB2424AC2F0030DE8F /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				3553B7D22401A8BE00566999 /* Database.xcdatamodeld */,
+				355ABBBF2496180B007C158B /* Database.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -262,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				357D2817248E96AD00F978B6 /* GeolocationService.swift */,
+				355ABBC2249619D2007C158B /* City.swift */,
 			);
 			path = GeolocationService;
 			sourceTree = "<group>";
@@ -321,6 +345,7 @@
 		35E0E70F2410226200E7F57E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				355ABBC4249622A9007C158B /* Decoding */,
 				35E9BC962413F069007DB59A /* Alamofire */,
 				35E0E7102410227B00E7F57E /* Network.swift */,
 			);
@@ -528,7 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3553B7D42401A8BE00566999 /* Database.xcdatamodeld in Sources */,
+				355ABBC6249622B9007C158B /* KeyedDecodingContainer.swift in Sources */,
 				353EC9BA2494D6F900DD05E4 /* ModelAssembly.swift in Sources */,
 				3530614C249152CC0062611F /* AlamofireProcessors.swift in Sources */,
 				355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */,
@@ -536,6 +561,8 @@
 				35E0E7112410227B00E7F57E /* Network.swift in Sources */,
 				355D7C9723FFF27C0030C6CD /* ViewController.swift in Sources */,
 				353A1FFB2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift in Sources */,
+				355ABBC12496180B007C158B /* Database.xcdatamodeld in Sources */,
+				355ABBBE249556D4007C158B /* Service.swift in Sources */,
 				3556D4FF248D749E00C2F0D0 /* PlistFile.swift in Sources */,
 				357D281B248E978500F978B6 /* URL.swift in Sources */,
 				35D45AA324164A9500D3C3E1 /* LocationService.swift in Sources */,
@@ -545,6 +572,7 @@
 				3508526C2417A3A70015DC8C /* UIHelper.swift in Sources */,
 				353A200424030449009B7033 /* TestDatabase.xcdatamodeld in Sources */,
 				35E9BC952413F03A007DB59A /* AlamofireNetwork.swift in Sources */,
+				355ABBC3249619D2007C158B /* City.swift in Sources */,
 				355D7C9323FFF27C0030C6CD /* AppDelegate.swift in Sources */,
 				35416F692406F122009A4DCB /* ForecastService.swift in Sources */,
 				3553B7CF24015E9D00566999 /* CoreDataWrapper.swift in Sources */,
@@ -900,12 +928,12 @@
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-		3553B7D22401A8BE00566999 /* Database.xcdatamodeld */ = {
+		355ABBBF2496180B007C158B /* Database.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3553B7D32401A8BE00566999 /* Database.xcdatamodel */,
+				355ABBC02496180B007C158B /* Database.xcdatamodel */,
 			);
-			currentVersion = 3553B7D32401A8BE00566999 /* Database.xcdatamodel */;
+			currentVersion = 355ABBC02496180B007C158B /* Database.xcdatamodel */;
 			path = Database.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

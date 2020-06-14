@@ -13,9 +13,13 @@ class ModelAssembly: Assembly {
     func assemble(container: Container) {
         assembleNetwork(container)
         assembleDataStorage(container)
+        
+        assembleServices(container)
     }
-    
-    func assembleNetwork(_ container: Container) {
+}
+
+private extension ModelAssembly {
+    private func assembleNetwork(_ container: Container) {
         container.register(AlamofireRequestProcessor.self) { _ in WeatherRequestProcessor() }
         container.register(AlamofireResponseProcessor.self) { _ in WeatherResponseProcessor() }
         
@@ -24,7 +28,7 @@ class ModelAssembly: Assembly {
         }.inObjectScope(.container)
     }
     
-    func assembleDataStorage(_ container: Container) {
+    private func assembleDataStorage(_ container: Container) {
         container.register(DataStorageBuilder.self) { _ in CommonDataStorageBuilder() }
         container.register(DataStorage.self) { r in
             let builder = r.resolve(DataStorageBuilder.self)
@@ -35,6 +39,12 @@ class ModelAssembly: Assembly {
             }
             
             return dataStorage!
-        }
+        }.inObjectScope(.container)
+    }
+}
+
+private extension ModelAssembly {
+    private func assembleServices(_ container: Container) {
+        
     }
 }
