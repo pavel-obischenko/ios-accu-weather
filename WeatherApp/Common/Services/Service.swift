@@ -12,8 +12,12 @@ class Service {
     private(set) var network: Network
     private(set) var dataStorage: DataStorage
     
-    init(network: Network, dataStorage: DataStorage) {
+    required init(network: Network, dataStorage: DataStorage) {
         self.network = network
         self.dataStorage = dataStorage
+        
+        setup()
     }
+    
+    func setup() {}
 }

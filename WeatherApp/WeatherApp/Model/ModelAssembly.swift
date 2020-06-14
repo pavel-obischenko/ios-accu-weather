@@ -19,7 +19,7 @@ class ModelAssembly: Assembly {
 }
 
 private extension ModelAssembly {
-    private func assembleNetwork(_ container: Container) {
+    func assembleNetwork(_ container: Container) {
         container.register(AlamofireRequestProcessor.self) { _ in WeatherRequestProcessor() }
         container.register(AlamofireResponseProcessor.self) { _ in WeatherResponseProcessor() }
         
@@ -28,23 +28,31 @@ private extension ModelAssembly {
         }.inObjectScope(.container)
     }
     
-    private func assembleDataStorage(_ container: Container) {
+    func assembleDataStorage(_ container: Container) {
         container.register(DataStorageBuilder.self) { _ in CommonDataStorageBuilder() }
         container.register(DataStorage.self) { r in
             let builder = r.resolve(DataStorageBuilder.self)
-            let dataStorage = builder?.build(with: "Database")
             
-            if dataStorage == nil {
+            guard let dataStorage = builder?.build(with: "Database") else {
                 fatalError("Couldn`t create DataStorage")
             }
-            
-            return dataStorage!
+            return dataStorage
         }.inObjectScope(.container)
+    }
+    
+    func assembleServices(_ container: Container) {
+        assembleGeolocationService(container)
+        // TODO:
     }
 }
 
 private extension ModelAssembly {
-    private func assembleServices(_ container: Container) {
-        
+    func assembleGeolocationService(_ container: Container) {
+        container.register(GeolocationService.self) { r in
+            guard let network = r.resolve(Network.self), let dataStorage = r.resolve(DataStorage.self) else {
+                fatalError("One or more dependenciea are not resolved")
+            }
+            return GeolocationService(network: network, dataStorage: dataStorage)
+        }.inObjectScope(.container)
     }
 }

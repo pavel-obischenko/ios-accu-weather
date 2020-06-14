@@ -7,25 +7,25 @@
 //
 
 import Foundation
-
+import CoreData
 
 struct City: Decodable {
-    var locationKey: String
-    var localizedName: String
+    var locationKey: String = ""
+    var localizedName: String = ""
     
-    var regionId: String
-    var regionLocalizedName: String
+    var regionId: String = ""
+    var regionLocalizedName: String = ""
     
-    var countryId: String
-    var countryLocalizedName: String
+    var countryId: String = ""
+    var countryLocalizedName: String = ""
     
-    var areaId: String
-    var areaLocalizedName: String
+    var areaId: String = ""
+    var areaLocalizedName: String = ""
     
-    var latitude: Double
-    var longitude: Double
+    var latitude: Double = 0
+    var longitude: Double = 0
     
-    var gmtOffset: Float
+    var gmtOffset: Float = 0
     
     enum CodingKeys: String, CodingKey {
         case Key, LocalizedName
@@ -80,5 +80,26 @@ struct City: Decodable {
         let geopositionContainer = try container.nestedContainer(keyedBy: GeoPositionKeys.self, forKey: .GeoPosition)
         latitude = geopositionContainer.decodeDouble(forKey: .Latitude)
         longitude = geopositionContainer.decodeDouble(forKey: .Longitude)
+    }
+    
+    init?(from object: NSManagedObject?) {
+        guard let object = `object` else { return nil }
+        
+        locationKey = object.string(forKey: "locationKey")
+        localizedName = object.string(forKey: "localizedName")
+        
+        regionId = object.string(forKey: "regionId")
+        regionLocalizedName = object.string(forKey: "regionLocalizedName")
+        
+        countryId = object.string(forKey: "countryId")
+        countryLocalizedName = object.string(forKey: "countryLocalizedName")
+        
+        areaId = object.string(forKey: "areaId")
+        areaLocalizedName = object.string(forKey: "areaLocalizedName")
+        
+        gmtOffset = object.float(forKey: "gmtOffset")
+        
+        latitude = object.double(forKey: "latitude")
+        longitude = object.double(forKey: "longitude")
     }
 }

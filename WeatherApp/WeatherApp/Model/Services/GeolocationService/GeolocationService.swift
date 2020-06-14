@@ -9,5 +9,10 @@
 import Foundation
 
 class GeolocationService: Service {
+    private(set) var currentCity: City?
     
+    override func setup() {
+        let currentCityObject = dataStorage.findFirstObject(entityName: "City", predicate: nil)
+        currentCity = City(from: currentCityObject)
+    }
 }
