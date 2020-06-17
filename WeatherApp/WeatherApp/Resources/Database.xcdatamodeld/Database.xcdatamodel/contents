@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="City" representedClassName="City" syncable="YES">
+    <entity name="City" representedClassName="CityCD" syncable="YES" codeGenerationType="class">
         <attribute name="areaId" optional="YES" attributeType="String"/>
         <attribute name="areaLocalizedName" optional="YES" attributeType="String"/>
         <attribute name="countryId" optional="YES" attributeType="String"/>
@@ -13,7 +13,7 @@
         <attribute name="regionId" optional="YES" attributeType="String"/>
         <attribute name="regionLocalizedName" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Locations" representedClassName="Locations" syncable="YES">
+    <entity name="Locations" representedClassName="LocationsCD" syncable="YES" codeGenerationType="class">
         <relationship name="current" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City"/>
     </entity>
     <elements>

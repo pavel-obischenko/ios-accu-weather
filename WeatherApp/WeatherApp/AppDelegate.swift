@@ -10,27 +10,30 @@ import UIKit
 import CoreLocation
 
 import Swinject
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let assembler = Assembler()
+    var dataStorage: DataStorage?
+    
+//    var disposeBag = DisposeBag()
+//    var gs: GeolocationService?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIHelper.createWindow()
         
         assemble()
+        construct()
         start()
         
         return true
     }
     
-    func start() {
-        guard let mainController = UIHelper.loadInitialViewController(storyboardName: "Main") else {
-            assertionFailure("Main View Controller Not Found!")
-            return }
-        UIHelper.changeRootViewControllerTo(controller: mainController)
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        dataStorage?.save()
     }
 }
 
@@ -38,5 +41,25 @@ extension AppDelegate {
     func assemble() {
         assembler.apply(assemblies: [ModelAssembly()])
     }
+    
+    func construct() {
+        dataStorage = assembler.resolver.resolve(DataStorage.self)
+    }
+    
+    func start() {
+        guard let mainController = UIHelper.loadInitialViewController(storyboardName: "Main") else {
+            assertionFailure("Main View Controller Not Found!")
+            return }
+        UIHelper.changeRootViewControllerTo(controller: mainController)
+        
+//        gs = assembler.resolver.resolve(GeolocationService.self)
+//        gs?.searchCurrentFor(latitude: 48.125, longitude: 37.851)
+//
+//        gs?.currentCity?.subscribe({ (event) in
+//            debugPrint(event.element as Any)
+//        }).disposed(by: disposeBag)
+    }
+    
+    
 }
 

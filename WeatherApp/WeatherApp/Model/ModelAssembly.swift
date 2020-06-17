@@ -20,7 +20,7 @@ class ModelAssembly: Assembly {
 
 private extension ModelAssembly {
     func assembleNetwork(_ container: Container) {
-        container.register(AlamofireRequestProcessor.self) { _ in WeatherRequestProcessor() }
+        container.register(AlamofireRequestProcessor.self) { _ in WeatherRequestProcessor(infoPlist: PlistFile.infoPlist) }
         container.register(AlamofireResponseProcessor.self) { _ in WeatherResponseProcessor() }
         
         container.register(Network.self) { r in
@@ -42,7 +42,6 @@ private extension ModelAssembly {
     
     func assembleServices(_ container: Container) {
         assembleGeolocationService(container)
-        // TODO:
     }
 }
 

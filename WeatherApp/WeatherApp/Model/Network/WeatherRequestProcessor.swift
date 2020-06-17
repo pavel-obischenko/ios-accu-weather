@@ -9,7 +9,16 @@
 import Foundation
 
 class WeatherRequestProcessor: AlamofireRequestProcessor {
+    var infoPlist: PlistFile
+    
+    init(infoPlist: PlistFile) {
+        self.infoPlist = infoPlist
+    }
+    
     func process(url: URL, parameters: [String : Any]?) -> (url: URL, parameters: [String : Any]?) {
-        return (url, parameters)
+        var params = parameters ?? [String : Any]()
+        params["apikey"] = infoPlist["ApiKey"]
+        
+        return (url, params)
     }
 }
