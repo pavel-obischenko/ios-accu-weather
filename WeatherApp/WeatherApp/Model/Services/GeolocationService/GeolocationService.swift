@@ -11,9 +11,9 @@ import RxSwift
 
 
 class GeolocationService: Service {
-    private var locations: BehaviorSubject<Locations?> = BehaviorSubject<Locations?>(value: nil)
+    private let locations: BehaviorSubject<Locations?> = BehaviorSubject<Locations?>(value: nil)
     
-    var currentCity: Observable<City>? {
+    var currentCity: Observable<City> {
         return locations.compactMap { $0?.current }
     }
     

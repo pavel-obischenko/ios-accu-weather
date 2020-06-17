@@ -13,11 +13,24 @@ extension KeyedDecodingContainer {
         return (try? decode(String.self, forKey: key)) ?? ""
     }
     
+    func decodeBool(forKey key: K) -> Bool {
+        return (try? decode(Bool.self, forKey: key)) ?? false
+    }
+    
+    func decodeInt(forKey key: K) -> Int {
+        return (try? decode(Int.self, forKey: key)) ?? 0
+    }
+    
     func decodeFloat(forKey key: K) -> Float {
         return (try? decode(Float.self, forKey: key)) ?? 0
     }
     
     func decodeDouble(forKey key: K) -> Double {
         return (try? decode(Double.self, forKey: key)) ?? 0
+    }
+    
+    func decodeDate(forKey key: K) -> Date {
+//        return (try? decode(String.self, forKey: key)) ?? ""
+        return Date()
     }
 }

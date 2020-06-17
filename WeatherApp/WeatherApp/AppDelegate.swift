@@ -19,8 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let assembler = Assembler()
     var dataStorage: DataStorage?
     
-//    var disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
 //    var gs: GeolocationService?
+    var fs: ForecastService?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIHelper.createWindow()
@@ -56,6 +57,13 @@ extension AppDelegate {
 //        gs?.searchCurrentFor(latitude: 48.125, longitude: 37.851)
 //
 //        gs?.currentCity?.subscribe({ (event) in
+//            debugPrint(event.element as Any)
+//        }).disposed(by: disposeBag)
+        
+//        fs = assembler.resolver.resolve(ForecastService.self)
+//        fs?.currentConditions(for: "322772")
+//
+//        fs?.currentConditions.subscribe({ (event) in
 //            debugPrint(event.element as Any)
 //        }).disposed(by: disposeBag)
     }

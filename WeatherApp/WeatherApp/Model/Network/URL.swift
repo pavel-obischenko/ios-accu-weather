@@ -10,7 +10,7 @@ import Foundation
 
 extension URL {
     static let geopositionSearch = URL(string: "locations/v1/cities/geoposition/search", relativeTo: baseUrl)
-    static let currentConditions = URL(string: "currentconditions/v1", relativeTo: baseUrl)
+    static let currentConditions = URL(string: "currentconditions/v1/", relativeTo: baseUrl)
 }
 
 private extension URL {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3508526C2417A3A70015DC8C /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3508526B2417A3A70015DC8C /* UIHelper.swift */; };
 		3530614C249152CC0062611F /* AlamofireProcessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3530614B249152CC0062611F /* AlamofireProcessors.swift */; };
+		35322C2B249A8F9A007123CA /* CurrentConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35322C2A249A8F9A007123CA /* CurrentConditions.swift */; };
+		35322C2D249A90F3007123CA /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35322C2C249A90F3007123CA /* Temperature.swift */; };
 		353A1FFB2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353A1FFA2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift */; };
 		353A1FFE2402F7D9009B7033 /* TestDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 353A1FFC2402F7D9009B7033 /* TestDatabase.xcdatamodeld */; };
 		353A1FFF2402F9F8009B7033 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7CC323FFFD250030C6CD /* DataStorage.swift */; };
@@ -66,6 +68,8 @@
 /* Begin PBXFileReference section */
 		3508526B2417A3A70015DC8C /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		3530614B249152CC0062611F /* AlamofireProcessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireProcessors.swift; sourceTree = "<group>"; };
+		35322C2A249A8F9A007123CA /* CurrentConditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentConditions.swift; sourceTree = "<group>"; };
+		35322C2C249A90F3007123CA /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		353A1FFA2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStoreCoordinatorBuilder.swift; sourceTree = "<group>"; };
 		353A1FFD2402F7D9009B7033 /* TestDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestDatabase.xcdatamodel; sourceTree = "<group>"; };
 		353EC9B92494D6F900DD05E4 /* ModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAssembly.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 		35322C29249A8548007123CA /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				35322C2A249A8F9A007123CA /* CurrentConditions.swift */,
+				35322C2C249A90F3007123CA /* Temperature.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				355ABBC6249622B9007C158B /* KeyedDecodingContainer.swift in Sources */,
+				35322C2B249A8F9A007123CA /* CurrentConditions.swift in Sources */,
 				353EC9BA2494D6F900DD05E4 /* ModelAssembly.swift in Sources */,
 				3530614C249152CC0062611F /* AlamofireProcessors.swift in Sources */,
 				355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */,
@@ -577,6 +584,7 @@
 				353A1FFB2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift in Sources */,
 				355ABBBE249556D4007C158B /* Service.swift in Sources */,
 				3556D4FF248D749E00C2F0D0 /* PlistFile.swift in Sources */,
+				35322C2D249A90F3007123CA /* Temperature.swift in Sources */,
 				357D281B248E978500F978B6 /* URL.swift in Sources */,
 				35D45AA324164A9500D3C3E1 /* LocationService.swift in Sources */,
 				355ABBCE24967F0A007C158B /* Database.xcdatamodeld in Sources */,

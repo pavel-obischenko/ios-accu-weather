@@ -42,6 +42,7 @@ private extension ModelAssembly {
     
     func assembleServices(_ container: Container) {
         assembleGeolocationService(container)
+        assembleForecastService(container)
     }
 }
 
@@ -52,6 +53,15 @@ private extension ModelAssembly {
                 fatalError("One or more dependenciea are not resolved")
             }
             return GeolocationService(network: network, dataStorage: dataStorage)
+        }.inObjectScope(.container)
+    }
+    
+    func assembleForecastService(_ container: Container) {
+        container.register(ForecastService.self) { r in
+            guard let network = r.resolve(Network.self), let dataStorage = r.resolve(DataStorage.self) else {
+                fatalError("One or more dependenciea are not resolved")
+            }
+            return ForecastService(network: network, dataStorage: dataStorage)
         }.inObjectScope(.container)
     }
 }
