@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +13,44 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7zn-jX-U7Y" userLabel="Logo Container View">
+                                <rect key="frame" x="65" y="384.66666666666669" width="284.33333333333331" height="127"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AccuWeather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-Vr-e09" userLabel="Title Label">
+                                        <rect key="frame" x="0.0" y="20" width="284.33333333333331" height="58"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="49"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Client" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irp-nF-JOZ" userLabel="Description Label">
+                                        <rect key="frame" x="20.000000000000014" y="86" width="244.33333333333337" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="irp-nF-JOZ" secondAttribute="bottom" constant="20" id="1m3-zX-co2"/>
+                                    <constraint firstItem="ewL-Vr-e09" firstAttribute="leading" secondItem="7zn-jX-U7Y" secondAttribute="leading" id="Auz-ok-W6D"/>
+                                    <constraint firstAttribute="trailing" secondItem="irp-nF-JOZ" secondAttribute="trailing" constant="20" id="E25-95-Vf9"/>
+                                    <constraint firstItem="irp-nF-JOZ" firstAttribute="leading" secondItem="7zn-jX-U7Y" secondAttribute="leading" constant="20" id="Hy8-LP-5wR"/>
+                                    <constraint firstAttribute="trailing" secondItem="ewL-Vr-e09" secondAttribute="trailing" id="NwP-gM-azs"/>
+                                    <constraint firstItem="ewL-Vr-e09" firstAttribute="top" secondItem="7zn-jX-U7Y" secondAttribute="top" constant="20" id="TKl-yd-wHT"/>
+                                    <constraint firstItem="irp-nF-JOZ" firstAttribute="top" secondItem="ewL-Vr-e09" secondAttribute="bottom" constant="8" id="oFc-OM-4kK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7zn-jX-U7Y" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kEb-rU-eyr"/>
+                            <constraint firstItem="7zn-jX-U7Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="38" id="oHk-SQ-hWZ"/>
+                            <constraint firstItem="7zn-jX-U7Y" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="qKJ-sT-CD2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7zn-jX-U7Y" secondAttribute="trailing" constant="38" id="x5j-Cc-BAv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

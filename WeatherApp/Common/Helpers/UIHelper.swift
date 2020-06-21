@@ -16,18 +16,18 @@ class UIHelper {
         return window
     }
     
-    static public func changeRootViewControllerTo(controller: UIViewController) {
-        changeRootViewControllerTo(controller: controller, completion: nil)
+    static public func changeRootViewControllerTo(controller: UIViewController, animated: Bool) {
+        changeRootViewControllerTo(controller: controller, animated: animated, completion: nil)
     }
     
-    static public func changeRootViewControllerTo(controller: UIViewController, completion: (() -> Void)?) {
+    static public func changeRootViewControllerTo(controller: UIViewController, animated: Bool, completion: (() -> Void)?) {
         guard let window = UIApplication.shared.keyWindow else {
             completion?()
             return
         }
         
         if window.rootViewController != nil {
-            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            UIView.transition(with: window, duration: animated ? 0.3 : 0, options: .transitionCrossDissolve, animations: {
                 let oldState = UIView.areAnimationsEnabled
                 UIView.setAnimationsEnabled(false)
                 window.rootViewController = controller

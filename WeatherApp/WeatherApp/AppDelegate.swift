@@ -14,18 +14,16 @@ import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
-    
     let assembler = Assembler()
+    let appCoordinator = AppCoordinator()
+    
     var dataStorage: DataStorage?
     
-    var disposeBag = DisposeBag()
+//    var disposeBag = DisposeBag()
 //    var gs: GeolocationService?
-    var fs: ForecastService?
+//    var fs: ForecastService?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIHelper.createWindow()
-        
         assemble()
         construct()
         start()
@@ -44,14 +42,16 @@ extension AppDelegate {
     }
     
     func construct() {
+        appCoordinator.setup()
         dataStorage = assembler.resolver.resolve(DataStorage.self)
     }
     
     func start() {
-        guard let mainController = UIHelper.loadInitialViewController(storyboardName: "Main") else {
-            assertionFailure("Main View Controller Not Found!")
-            return }
-        UIHelper.changeRootViewControllerTo(controller: mainController)
+        appCoordinator.start()
+//        guard let mainController = UIHelper.loadInitialViewController(storyboardName: "Main") else {
+//            assertionFailure("Main View Controller Not Found!")
+//            return }
+//        UIHelper.changeRootViewControllerTo(controller: mainController, animated: false)
         
 //        gs = assembler.resolver.resolve(GeolocationService.self)
 //        gs?.searchCurrentFor(latitude: 48.125, longitude: 37.851)
