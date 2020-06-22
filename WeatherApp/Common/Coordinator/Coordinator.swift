@@ -34,9 +34,6 @@ class BaseCoordinator: Coordinator, CoordinatorResult {
     var navigationController: UINavigationController?
     var viewController: UIViewController?
     
-    var currentViewController: UIViewController? {
-        return navigationController ?? viewController
-    }
     var policy: CoordinatorPolicy = .none
     
     init(root: CoordinatorRootHolder?, previous: CoordinatorResult?) {
@@ -51,13 +48,15 @@ class BaseCoordinator: Coordinator, CoordinatorResult {
         
         setup(with: params)
 
+        // TODO: refactor to coordinator's presenter (???)
+        // The presenter should knows how to presents the next view controller (???)
+        
         switch policy {
         case .changeRoot:
-            guard let currentController = self.currentViewController else {
-                fatalError("BaseCoordinator.show: currentController should not be nil")
-            }
+            let navigationController = UINavigationController(rootViewController: viewController)
+            self.navigationController = navigationController
             
-            UIHelper.changeRootViewControllerTo(controller: currentController, animated: animated)
+            UIHelper.changeRootViewControllerTo(controller: navigationController, animated: animated)
             root?.set(root: self)
             
         case .push(let controller):
@@ -65,10 +64,11 @@ class BaseCoordinator: Coordinator, CoordinatorResult {
             navigationController?.pushViewController(viewController, animated: animated)
             
         case .showModal(let controller):
-            let modalNaviagationController = UINavigationController(rootViewController: viewController)
-            controller.present(modalNaviagationController, animated: animated, completion: nil)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            self.navigationController = navigationController
             
-            navigationController = modalNaviagationController
+            controller.present(navigationController, animated: animated, completion: nil)
+            
         default: break
         }
     }
