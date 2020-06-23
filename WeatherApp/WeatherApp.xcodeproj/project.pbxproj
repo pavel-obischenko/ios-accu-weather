@@ -46,6 +46,8 @@
 		355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355D7CC624000B070030C6CD /* DataStorageBuilder.swift */; };
 		357D2818248E96AD00F978B6 /* GeolocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D2817248E96AD00F978B6 /* GeolocationService.swift */; };
 		357D281B248E978500F978B6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D281A248E978500F978B6 /* URL.swift */; };
+		3590840F24A2751F0061E366 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590840E24A2751F0061E366 /* RootCoordinator.swift */; };
+		3590841124A275430061E366 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590841024A275430061E366 /* BaseCoordinator.swift */; };
 		35D45AA324164A9500D3C3E1 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D45AA224164A9500D3C3E1 /* LocationService.swift */; };
 		35E0E7112410227B00E7F57E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E0E7102410227B00E7F57E /* Network.swift */; };
 		35E9BC952413F03A007DB59A /* AlamofireNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */; };
@@ -117,6 +119,8 @@
 		355D7CC624000B070030C6CD /* DataStorageBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageBuilder.swift; sourceTree = "<group>"; };
 		357D2817248E96AD00F978B6 /* GeolocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeolocationService.swift; sourceTree = "<group>"; };
 		357D281A248E978500F978B6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		3590840E24A2751F0061E366 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		3590841024A275430061E366 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		35D45AA224164A9500D3C3E1 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		35E0E7102410227B00E7F57E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		35E9BC942413F03A007DB59A /* AlamofireNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetwork.swift; sourceTree = "<group>"; };
@@ -475,6 +479,8 @@
 			isa = PBXGroup;
 			children = (
 				35F6E01D249DF09A0077C7D9 /* Coordinator.swift */,
+				3590840E24A2751F0061E366 /* RootCoordinator.swift */,
+				3590841024A275430061E366 /* BaseCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -708,10 +714,12 @@
 				355D7CC724000B070030C6CD /* DataStorageBuilder.swift in Sources */,
 				35F6E016249D461E0077C7D9 /* BaseViewController.swift in Sources */,
 				35F6E019249D47300077C7D9 /* Binder.swift in Sources */,
+				3590840F24A2751F0061E366 /* RootCoordinator.swift in Sources */,
 				355ABBBB24952AAA007C158B /* WeatherResponseProcessor.swift in Sources */,
 				35E0E7112410227B00E7F57E /* Network.swift in Sources */,
 				35322C44249BA31D007123CA /* StartViewModel.swift in Sources */,
 				355D7C9723FFF27C0030C6CD /* ViewController.swift in Sources */,
+				3590841124A275430061E366 /* BaseCoordinator.swift in Sources */,
 				353A1FFB2402F2F7009B7033 /* PersistentStoreCoordinatorBuilder.swift in Sources */,
 				35F6E027249E911C0077C7D9 /* AppCoordinator.swift in Sources */,
 				35F6E01E249DF09A0077C7D9 /* Coordinator.swift in Sources */,

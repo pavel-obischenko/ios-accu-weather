@@ -10,8 +10,7 @@ import UIKit
 
 class AppCoordinator: RootCoordinator {
     func start() {
-        let startCoordinator = StartCoordinator(root: self, previous: nil)
-
+        let startCoordinator = StartCoordinator(root: self, result: nil)
         startCoordinator.show(policy: .changeRoot, params: 0, animated: false)
     }
 }

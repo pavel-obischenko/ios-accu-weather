@@ -13,7 +13,7 @@ class StartCoordinator: BaseCoordinator {
     var startViewController: StartViewController
     var startViewModel: StartViewModel
     
-    override init(root: CoordinatorRootHolder?, previous: CoordinatorResult?) {
+    override init(root: CoordinatorRootSetter?, result previous: CoordinatorResult?) {
         startViewController = UIHelper.loadViewController(controllerName: "StartViewController", storyboardName: "StartFlow") as! StartViewController
         
         startViewModel = StartViewModel()
@@ -22,7 +22,7 @@ class StartCoordinator: BaseCoordinator {
         let startBinder = StartBinder(view: startViewController, viewModel: startViewModel)
         startViewController.binder = startBinder
         
-        super.init(root: root, previous: nil)
+        super.init(root: root, result: nil)
         viewController = startViewController
         navigationController?.viewControllers = [startViewController]
     }
